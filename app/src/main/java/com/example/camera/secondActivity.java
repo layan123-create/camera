@@ -22,9 +22,11 @@ import android.provider.MediaStore;
 public class secondActivity extends AppCompatActivity {
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private Button BackButton;
+    private TextView image;
     private String details;
     private ImageView imageView;
     private Bitmap imageBitmap;
+    private bundle extras;
     private String name,surname,cam,address,de;
     @SuppressLint("WrongViewCast")
     @Override
@@ -32,7 +34,7 @@ public class secondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main3);
-        Button changePictureButton = findViewById(R.id.buttonChange);
+        changePictureButton = findViewById(R.id.buttonChange);
         changePictureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,18 +59,16 @@ public class secondActivity extends AppCompatActivity {
         if (imageBitmap != null) {
             imageView.setImageBitmap(imageBitmap);
 
-            BackButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    finish();
-                }
-            });
         }
+    }
+    puplic void back(View view)
+    {
+        finish();
     }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bundle extras=data.getExtras();
+            extras=data.getExtras();
             imageBitmap = (Bitmap) data.getExtras().get("data");
             imageView.setImageBitmap(imageBitmap);
         }
