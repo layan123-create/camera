@@ -54,6 +54,7 @@
             android:layout_height="match_parent"
             android:layout_weight="5"
             android:text="Go Back"
+            android:onClick="back"
             android:textSize="25dp"
             tools:layout_editor_absoluteX="200dp"
             tools:layout_editor_absoluteY="451dp" />
